@@ -1,5 +1,6 @@
 import Prelude
 import Data.Char ( ord, chr, isDigit )
+import System.Win32 (COORD(x, y))
 
 -- 1.1
 square :: Num a => a -> a
@@ -67,3 +68,58 @@ charValue c = case isDigit c of
     True -> ord c - ord '0'
 
 
+max' :: Ord p => p -> p -> p
+max' x y 
+    | x > y = x
+    | otherwise = y
+
+max'' x y = if x > y then x else y
+
+maxThree :: Ord a => a -> a -> a -> a
+maxThree x y z 
+    | x > y && x > z = x
+    | y > x && y > z = y
+    | otherwise = z
+
+maxThree' :: Ord a => a -> a -> a -> a
+maxThree' x y z = max ( max x y ) z
+
+
+-- 3.4
+-- Почему то не работает
+-- qq :: Int -> Int
+-- qq (x + 4) = x - 3
+
+-- 3.5
+middle :: (a, b, c) -> b
+middle (_, m, _) = m
+
+-- 3.6
+isOrder :: Ord a => [a] -> Bool
+isOrder (x1:x2:x3) |x1 > x2 = True
+isOrder _ = False 
+
+sum' :: Num p => [p] -> p
+sum' [] = 0
+sum' (hd:tl) = hd + sum' tl
+
+length' :: Num p => [a] -> p
+length' [] = 0
+length' (_:tl) = 1 + length' tl
+
+-- 3.2
+greater' x y 
+    | x > y = x
+    | otherwise = y
+
+circleArea r = r * r * pi
+    where pi = 22 / 7
+
+-- 3.4
+numberSol a b c 
+    | d > 0 = 2
+    | d == 0 = 1
+    | otherwise = 0
+    where d = b * b - 4 * a * c
+
+-- 3.5
